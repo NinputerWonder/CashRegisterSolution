@@ -37,3 +37,4 @@ public class CashRegisterTest {
         printer.verifyThatPrintWasCalledWith(stubbedPurchaseDescription);
     }
 }
+
