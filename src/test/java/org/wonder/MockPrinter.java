@@ -20,8 +20,12 @@ public class MockPrinter extends Printer {
     }
 
     public void verifyThatPrintWasCalledWith(String expectedPurchaseDescription) {
-        assertTrue("expected print to be called at least once, print was not called", isInvoked);
+        verifyThatPrintWasCalled();
         assertEquals("expected print to be called with '" + expectedPurchaseDescription + "', but was called with '" + actualPurchaseDescription + "'",
                 expectedPurchaseDescription, actualPurchaseDescription);
+    }
+
+    public void verifyThatPrintWasCalled() {
+        assertTrue("expected print to be called at least once, print was not called", isInvoked);
     }
 }
