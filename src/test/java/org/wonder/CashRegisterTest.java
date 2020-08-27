@@ -22,4 +22,18 @@ public class CashRegisterTest {
         printer.verifyThatPrintWasCalled();
         printer.verifyThatPrintWasCalledWith(purchase.asString());
     }
+
+    @Test
+    public void shouldInvokePrintMethodWithTheStubbedPurchase()
+    {
+        final String stubbedPurchaseDescription = "stubbed purchase";
+        Purchase purchase = new StubPurchase(stubbedPurchaseDescription);
+        MockPrinter printer = new MockPrinter();
+
+        CashRegister cashRegister = new CashRegister(printer);
+        cashRegister.process(purchase);
+
+        printer.verifyThatPrintWasCalled();
+        printer.verifyThatPrintWasCalledWith(stubbedPurchaseDescription);
+    }
 }
