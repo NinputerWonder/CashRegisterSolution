@@ -2,6 +2,8 @@ package org.wonder;
 
 import org.junit.Test;
 
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
 
 public class CashRegisterTestWithMockito {
@@ -32,5 +34,18 @@ public class CashRegisterTestWithMockito {
         cashRegister.process(stubbedPurchase);
 
         verify(mockedPrinter).print(stubbedPurchaseDescription);
+    }
+
+    @Test
+    public void shouldInvokePrintMethodWithTheStubbedPurchaseUseBDD() {
+        final String stubbedPurchaseDescription = "stubbed purchase";
+        Purchase stubbedPurchase = mock(Purchase.class);
+        given(stubbedPurchase.asString()).willReturn(stubbedPurchaseDescription);
+        Printer mockedPrinter = mock(Printer.class);
+
+        CashRegister cashRegister = new CashRegister(mockedPrinter);
+        cashRegister.process(stubbedPurchase);
+
+        then(mockedPrinter).should(times(1)).print(stubbedPurchaseDescription);
     }
 }
