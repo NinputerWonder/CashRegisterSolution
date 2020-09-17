@@ -19,7 +19,7 @@ public class MockPrinter extends Printer {
         this.actualPurchaseDescription = actualPurchaseDescription;
     }
 
-    public void verifyThatPrintWasCalledWith(String expectedPurchaseDescription) {
+    public void verifyPrintWasCalledWith(String expectedPurchaseDescription) {
         verifyThatPrintWasCalled();
         assertEquals("expected print to be called with '" + expectedPurchaseDescription + "', but was called with '" + actualPurchaseDescription + "'",
                 expectedPurchaseDescription, actualPurchaseDescription);

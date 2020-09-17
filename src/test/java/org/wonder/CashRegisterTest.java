@@ -20,7 +20,7 @@ public class CashRegisterTest {
         cashRegister.process(purchase);
 
         printer.verifyThatPrintWasCalled();
-        printer.verifyThatPrintWasCalledWith(purchase.asString());
+        printer.verifyPrintWasCalledWith(purchase.asString());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class CashRegisterTest {
         cashRegister.process(purchase);
 
         printer.verifyThatPrintWasCalled();
-        printer.verifyThatPrintWasCalledWith(stubbedPurchaseDescription);
+        printer.verifyPrintWasCalledWith(stubbedPurchaseDescription);
     }
 }
 
